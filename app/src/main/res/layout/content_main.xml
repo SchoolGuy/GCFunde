@@ -19,9 +19,9 @@
         android:hint="@string/content_main_search" />
 
     <ListView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/listView"
+        android:id="@+id/list"
         android:entries="@array/content_main_noMatch"
         android:fastScrollEnabled="false" />
 </LinearLayout>

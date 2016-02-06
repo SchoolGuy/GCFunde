@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:contentDescription="GCSymbol" android:minHeight="75dp" android:minWidth="75dp"
+            android:src="@drawable/ic_action_camera"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/GCTitle"
+            android:id="@+id/textView21" android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView2"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/GCNumber"
+            android:id="@+id/textView22" android:layout_below="@+id/textView21"
+            android:layout_toEndOf="@+id/imageView2"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:minHeight="75dp" android:minWidth="50dp" android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" android:src="@drawable/ic_action_add"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/TerrainDifficulty"
+            android:id="@+id/textView23" android:layout_below="@+id/textView22"
+            android:layout_toEndOf="@+id/imageView2"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4" android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageView3" android:minHeight="25dp" android:minWidth="25dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/DistanceToCache"
+            android:id="@+id/textView24"
+            android:layout_alignBottom="@+id/imageView3" android:layout_toStartOf="@+id/imageView3"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/FavoritePoints"
+            android:id="@+id/textView25" android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageView4"/>
+</RelativeLayout>

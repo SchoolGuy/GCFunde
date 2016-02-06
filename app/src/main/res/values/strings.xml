@@ -103,4 +103,9 @@
     <string name="fragment_geocache_details_pic_edit">edit</string>
     <string name="fragment_geocache_details_log_ourLog">Unser Log:</string>
     <string name="fragment_geocache_details_log_date">Datum</string>
+    <string name="GCTitle">Geocachetitel</string>
+    <string name="GCNumber">GC-Nummer</string>
+    <string name="TerrainDifficulty">D:1,0 - T:1,0</string>
+    <string name="DistanceToCache">~ 999,99 km</string>
+    <string name="FavoritePoints">9999</string>
 </resources>
