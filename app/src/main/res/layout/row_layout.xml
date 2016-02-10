@@ -7,7 +7,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:id="@+id/imgVType" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
             android:contentDescription="GCSymbol" android:minHeight="75dp" android:minWidth="75dp"
             android:src="@drawable/ic_action_camera"/>
     <TextView
@@ -15,19 +15,19 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/GCTitle"
-            android:id="@+id/textView21" android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView2" android:maxLines="1" android:maxWidth="150dp" android:lines="1"/>
+            android:id="@+id/txtFGCTitle" android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imgVType" android:maxLines="1" android:maxWidth="150dp" android:lines="1"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/GCNumber"
-            android:id="@+id/textView22" android:layout_below="@+id/textView21"
-            android:layout_toEndOf="@+id/imageView2"/>
+            android:id="@+id/txtFGCNumber" android:layout_below="@+id/txtFGCTitle"
+            android:layout_toEndOf="@+id/imgVType"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView3"
+            android:id="@+id/imgVDirection"
             android:minHeight="75dp" android:minWidth="50dp" android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" android:src="@drawable/ic_action_add"/>
     <TextView
@@ -35,26 +35,28 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/TerrainDifficulty"
-            android:id="@+id/textView23" android:layout_below="@+id/textView22"
-            android:layout_toEndOf="@+id/imageView2"/>
+            android:id="@+id/txtFDifficultyTerrain" android:layout_below="@+id/txtFGCNumber"
+            android:layout_toEndOf="@+id/imgVType"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView4" android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView3" android:minHeight="25dp" android:minWidth="25dp"
-            android:src="@drawable/ic_action_add"/>
+            android:id="@+id/imgVFavSymbol"
+            android:minHeight="25dp" android:minWidth="25dp"
+            android:src="@drawable/ic_action_add"
+            android:layout_below="@+id/txtFGCTitle" android:layout_toStartOf="@+id/imgVDirection"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/DistanceToCache"
-            android:id="@+id/textView24"
-            android:layout_alignBottom="@+id/imageView3" android:layout_toStartOf="@+id/imageView3"/>
+            android:id="@+id/txtFDistanceToCache"
+            android:layout_alignBottom="@+id/imgVDirection" android:layout_toStartOf="@+id/imgVDirection"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/FavoritePoints"
-            android:id="@+id/textView25" android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView4" android:minHeight="25dp" android:gravity="center_vertical"/>
+            android:id="@+id/txtFFavoritePoints"
+            android:minHeight="25dp" android:gravity="center_vertical"
+            android:layout_below="@+id/txtFGCTitle" android:layout_toStartOf="@+id/imgVFavSymbol"/>
 </RelativeLayout>
