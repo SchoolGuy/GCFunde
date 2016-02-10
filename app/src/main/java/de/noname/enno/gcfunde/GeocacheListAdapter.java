@@ -21,6 +21,10 @@ public class GeocacheListAdapter extends BaseAdapter {
         return 0;
     }
 
+    public static class Holder {
+
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         return null;
