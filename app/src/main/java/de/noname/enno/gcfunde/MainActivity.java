@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //List View
         l = (ListView) findViewById(R.id.listView);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter (this);
+        GeocacheListAdapter adapter1 = new GeocacheListAdapter (days,days,days,days,days,days,this);
         l.setAdapter(adapter1);
     }
 

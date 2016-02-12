@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-public final class PoketQueryReader extends MainActivity{
+public final class DatabaseHandler extends MainActivity{
 
     MainActivity mainActivity = new MainActivity();
 
-    public PoketQueryReader () {}
+    public DatabaseHandler() {}
 
     public static abstract class PQColumns implements BaseColumns {
         public static final String TABLE_NAME = "Founds";
@@ -35,6 +35,7 @@ public final class PoketQueryReader extends MainActivity{
         public static final String COLUMN_GC_OWN_LOG = "Own Log";
         public static final String COLUMN_GC_NORTH_COORDS = "North Coords";
         public static final String COLUMN_GC_EAST_COORDS = "East Coords";
+        public static final String COLUMN_DATABASENAME = "Database Name";
     }
 
     public class PoketQueryDBHelper extends SQLiteOpenHelper {
@@ -88,38 +89,40 @@ public final class PoketQueryReader extends MainActivity{
                     PQColumns.COLUMN_GC_OWN_FOUND_STATUS + TEXT_TYPE + COMMA_SEP +
                     PQColumns.COLUMN_GC_OWN_FOUND_DATE + TEXT_TYPE + COMMA_SEP +
                     PQColumns.COLUMN_GC_OWN_LOG + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_DATABASENAME + TEXT_TYPE + COMMA_SEP +
             " )";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PQColumns.TABLE_NAME;
     PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(mainActivity.getApplicationContext());
 
 
-    public long writeIntoDB (String cacheID) {
+    public long writeIntoDB (String cacheID,String gcNumber,String gcName,String gcOwner,String gcType,String gcTerrain,String gcDifficulty,String gcContainer, String gcUrl,String gcNorthCoords,String gcEastCoords,String gcAvailable, String gcArchived,String gcAttributes,String gcShortDescription,String gcLongDescription,String gcHint,String gcOwnFoundStatus,String gcOwnFoundDate,String gcOwnLog,String database) {
         // Gets the data repository in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        //values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
+        values.put(PQColumns.COLUMN_GC_NUMBER, gcNumber);
+        values.put(PQColumns.COLUMN_GC_NAME, gcName);
+        values.put(PQColumns.COLUMN_GC_OWNER, gcOwner);
+        values.put(PQColumns.COLUMN_GC_TYPE, gcType);
+        values.put(PQColumns.COLUMN_GC_TERRAIN, gcTerrain);
+        values.put(PQColumns.COLUMN_GC_DIFFICULTY, gcDifficulty);
+        values.put(PQColumns.COLUMN_GC_CONTAINER, gcContainer);
+        values.put(PQColumns.COLUMN_GC_URL, gcUrl);
+        values.put(PQColumns.COLUMN_GC_NORTH_COORDS, gcNorthCoords);
+        values.put(PQColumns.COLUMN_GC_EAST_COORDS, gcEastCoords);
+        values.put(PQColumns.COLUMN_GC_AVAILABLE, gcAvailable);
+        values.put(PQColumns.COLUMN_GC_ARCHIVED, gcArchived);
+        values.put(PQColumns.COLUMN_GC_ATTRIBUTES, gcAttributes);
+        values.put(PQColumns.COLUMN_GC_SHORT_DESCRIPTION, gcShortDescription);
+        values.put(PQColumns.COLUMN_GC_LONG_DESCRIPTION, gcLongDescription);
+        values.put(PQColumns.COLUMN_GC_HINT, gcHint);
+        values.put(PQColumns.COLUMN_GC_OWN_FOUND_STATUS, gcOwnFoundStatus);
+        values.put(PQColumns.COLUMN_GC_OWN_FOUND_DATE, gcOwnFoundDate);
+        values.put(PQColumns.COLUMN_GC_OWN_LOG, gcOwnLog);
+        values.put(PQColumns.COLUMN_DATABASENAME,database);
 
         return db.insert(
                 PQColumns.TABLE_NAME,
@@ -170,10 +173,8 @@ public final class PoketQueryReader extends MainActivity{
                 sortOrder                     // The sort order
         );
 
-        /*Cursor.moveToFirst();
-        long itemId = Cursor.getLong(
-                Cursor.getColumnIndexOrThrow(PQColumns._ID)
-        );*/
+        c.moveToFirst();
+        long itemID = c.getLong(c.getColumnIndexOrThrow(PQColumns._ID));
     }
 
     public void deleteFromDB () {
