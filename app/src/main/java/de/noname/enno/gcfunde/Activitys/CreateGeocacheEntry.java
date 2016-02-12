@@ -12,8 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import de.noname.enno.gcfunde.Activitys.MainActivity;
-import de.noname.enno.gcfunde.Activitys.SettingsActivity;
+import de.noname.enno.gcfunde.MainActivity;
 import de.noname.enno.gcfunde.R;
 
 public class CreateGeocacheEntry extends AppCompatActivity
