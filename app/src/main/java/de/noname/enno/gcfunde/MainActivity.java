@@ -11,6 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.ListView;
+import de.noname.enno.gcfunde.Activitys.CreateGeocacheEntry;
+import de.noname.enno.gcfunde.Activitys.GeocacheDetails;
+import de.noname.enno.gcfunde.Activitys.SettingsActivity;
+import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
+import de.noname.enno.gcfunde.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ListView l;

@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Activitys;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

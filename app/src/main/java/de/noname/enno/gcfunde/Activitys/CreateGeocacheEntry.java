@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
-import java.util.List;
+import de.noname.enno.gcfunde.Activitys.MainActivity;
+import de.noname.enno.gcfunde.Activitys.SettingsActivity;
+import de.noname.enno.gcfunde.R;
 
 public class CreateGeocacheEntry extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

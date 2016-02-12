@@ -1,10 +1,11 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import de.noname.enno.gcfunde.R;
 
 public class fragment_geocache_details_log extends Fragment {
 

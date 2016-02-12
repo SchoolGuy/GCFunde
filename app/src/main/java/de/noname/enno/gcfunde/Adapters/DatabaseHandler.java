@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Adapters;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import de.noname.enno.gcfunde.MainActivity;
 
-public final class DatabaseHandler extends MainActivity{
+public final class DatabaseHandler extends MainActivity {
 
     MainActivity mainActivity = new MainActivity();
 

@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Activitys;
 
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import de.noname.enno.gcfunde.Fragments.fragment_geocache_details;
+import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_log;
+import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_waypoints;
+import de.noname.enno.gcfunde.R;
 
 public class GeocacheDetails extends AppCompatActivity {
 
@@ -89,7 +93,7 @@ public class GeocacheDetails extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new fragment_geocache_details_waypoints ();
+                    return new fragment_geocache_details_waypoints();
                 case 1:
                     return new fragment_geocache_details();
                 case 2:

@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Activitys;
 
 
 import android.annotation.TargetApi;
@@ -20,6 +20,8 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import de.noname.enno.gcfunde.AppCompatPreferenceActivity;
+import de.noname.enno.gcfunde.R;
 
 import java.util.List;
 
