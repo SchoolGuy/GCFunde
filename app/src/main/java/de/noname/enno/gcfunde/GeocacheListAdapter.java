@@ -26,7 +26,7 @@ public class GeocacheListAdapter extends BaseAdapter {
         DistancesToCaches = distancesToCaches;
         FavPoints = favPoints;
         Symboles = symboles;
-        ctxt = context;
+        context = ctxt;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

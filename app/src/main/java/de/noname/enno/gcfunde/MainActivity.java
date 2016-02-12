@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //List View
-        l = (ListView) findViewById(R.id.listView);
+        l = (ListView) findViewById(R.id.list);
         GeocacheListAdapter adapter1 = new GeocacheListAdapter (days,days,days,days,days,days,this);
         l.setAdapter(adapter1);
     }
