@@ -13,9 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * @author Enno Gotthold
+ * @version 0.1
+ * Well I don't know what this class is doing, but it seems to be needed when Android Studio is creating it.
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
  */
+
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;

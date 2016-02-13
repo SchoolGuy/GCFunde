@@ -9,6 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import de.noname.enno.gcfunde.R;
 
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class should describe the listView in the Main Activity.
+ * Later it should be extended that when the user is changing his GPS coordinates, only the distance and the direction is changing, afterwards the listView should sort itself after distance.
+ */
+
 public class GeocacheListAdapter extends BaseAdapter {
 
     String [] GCTitles;
@@ -18,8 +25,17 @@ public class GeocacheListAdapter extends BaseAdapter {
     String [] FavPoints;
     String [] Symboles;
     Context context;
-    LayoutInflater layoutInflater;
+    LayoutInflater layoutInflater; //This inflates the XML row_layout to a listView
 
+    /*
+     * @param gcTitles String array that is containing all GC-Numbers (sort of id) of the caches.
+     * @param gcNames String array that is containing all the names of the caches.
+     * @param difficultysTerrains String array that is containing all of the difficulty's and terrains of the caches.
+     * @param distancesToCaches String array that is containing all distances to the caches.
+     * @param favPoints String array that is containing the count of favourite points of all caches.
+     * @param symboles String array that is containing the cache type and so the name of the symbol that should be shown (also for all caches).
+     * @param ctxt This should contain where the listView is displayed, in most cases it is {@code this}.
+     */
     public GeocacheListAdapter(String [] gcTitles,String [] gcNames,String [] difficultysTerrains,String [] distancesToCaches,String [] favPoints,String [] symboles,Context ctxt) {
         GCTitles = gcTitles;
         GCNames = gcNames;
@@ -46,11 +62,20 @@ public class GeocacheListAdapter extends BaseAdapter {
         return position;
     }
 
+
+    /*
+     * This class should contain the parts that one element should have. Why? Don't know. Source: {@link http://stackoverflow.com/questions/35240906/using-an-external-xml-file-for-custom-list-view-adapter}
+     */
     public class Holder {
         TextView GCTitles,GCNames,DifficultysTerrains,DistancesToCaches,FavPoints;
         ImageView Symbol,Direction,FavSymbol;
     }
 
+    /*
+     * @param position This is the position that the item that will be created is having.
+     * @param convertView Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
+     * @param parent Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
+     */
     public View getView (int position, View convertView, ViewGroup parent) {
         Holder holder = new Holder();
         convertView = layoutInflater.inflate(R.layout.row_layout, null);

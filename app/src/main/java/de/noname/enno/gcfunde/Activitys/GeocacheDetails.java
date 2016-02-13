@@ -18,9 +18,17 @@ import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_log;
 import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_waypoints;
 import de.noname.enno.gcfunde.R;
 
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class was created by Android Studio. It should contain a tabbed Activity. Later this will be only available when watching cache details, now it is also reachable via the menu in the Main Activity.
+ */
+
 public class GeocacheDetails extends AppCompatActivity {
 
     /**
+     *
+     *
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every

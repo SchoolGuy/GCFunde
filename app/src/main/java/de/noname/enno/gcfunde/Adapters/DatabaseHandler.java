@@ -8,12 +8,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import de.noname.enno.gcfunde.MainActivity;
 
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class represents the SQL Database that contains the caches.
+ * This class was created with the help of the Google Android Tutorial, specifically {@link http://developer.android.com/training/basics/data-storage/databases.html}
+ */
+
 public final class DatabaseHandler extends MainActivity {
 
     MainActivity mainActivity = new MainActivity();
 
     public DatabaseHandler() {}
 
+    /*
+     * This inner class defines the layout of the SQL Database
+     */
     public static abstract class PQColumns implements BaseColumns {
         public static final String TABLE_NAME = "Founds";
         public static final String COLUMN_GC_CACHE_ID = "Cache ID";
@@ -65,6 +75,9 @@ public final class DatabaseHandler extends MainActivity {
 
     }
 
+    /*
+     * This variables are defining the SQL statement for creating the database.
+     */
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =

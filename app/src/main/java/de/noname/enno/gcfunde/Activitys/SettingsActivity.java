@@ -25,6 +25,10 @@ import de.noname.enno.gcfunde.R;
 import java.util.List;
 
 /**
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class was created by Android Studio, will later be modified to our needs.
+ *
  * A {@link PreferenceActivity} that presents a set of application settings. On
  * handset devices, settings are presented as a single list. On tablets,
  * settings are split by category, with category headers shown to the left of

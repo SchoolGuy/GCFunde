@@ -15,7 +15,13 @@ import de.noname.enno.gcfunde.Activitys.CreateGeocacheEntry;
 import de.noname.enno.gcfunde.Activitys.GeocacheDetails;
 import de.noname.enno.gcfunde.Activitys.SettingsActivity;
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
-import de.noname.enno.gcfunde.R;
+
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class is the Main Acitivity for this Android App.
+ * It contains a List View
+ */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ListView l;
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //This presents the action bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,13 +42,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //List View
         l = (ListView) findViewById(R.id.list);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter (days,days,days,days,days,days,this);
+        GeocacheListAdapter adapter1 = new GeocacheListAdapter (days,days,days,days,days,days,this); //Parameter days is currently just here to guarantee that the app can be tested.
         l.setAdapter(adapter1);
     }
 

@@ -14,6 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import de.noname.enno.gcfunde.MainActivity;
 import de.noname.enno.gcfunde.R;
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+*/
 
 public class CreateGeocacheEntry extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

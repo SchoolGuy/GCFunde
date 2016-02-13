@@ -7,6 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import de.noname.enno.gcfunde.R;
 
+/*
+ * @author Enno Gotthold
+ * @version 0.1
+ * This class contains functions that are needed for the related XML file
+ */
+
 public class fragment_geocache_details_waypoints extends Fragment {
 
     @Override
