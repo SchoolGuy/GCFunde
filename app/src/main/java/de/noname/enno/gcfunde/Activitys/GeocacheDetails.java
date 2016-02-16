@@ -121,11 +121,11 @@ public class GeocacheDetails extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Wegpunkte";
+                    return getResources().getString(R.string.fragment_geocache_details_waypoints);
                 case 1:
-                    return "Details";
+                    return getResources().getString(R.string.fragment_geocache_details_details);
                 case 2:
-                    return "Log";
+                    return getResources().getString(R.string.fragment_geocache_details_log);
             }
             return null;
         }

@@ -18,6 +18,39 @@ import de.noname.enno.gcfunde.MainActivity;
 public final class DatabaseHandler extends MainActivity {
 
     MainActivity mainActivity = new MainActivity();
+    /*
+     * This variables are defining the SQL statement for creating the database.
+     */
+    private static final String TEXT_TYPE = " TEXT";
+    private static final String COMMA_SEP = ",";
+    private static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE " + PQColumns.TABLE_NAME + " (" +
+                    PQColumns._ID + " INTEGER PRIMARY KEY," +
+                    PQColumns.COLUMN_GC_CACHE_ID + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_NUMBER + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_NAME + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_OWNER + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_TYPE + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_TERRAIN + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_DIFFICULTY + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_CONTAINER + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_URL + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_NORTH_COORDS + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_EAST_COORDS + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_AVAILABLE + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_ARCHIVED + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_ATTRIBUTES + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_SHORT_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_LONG_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_HINT + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_OWN_FOUND_STATUS + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_OWN_FOUND_DATE + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_GC_OWN_LOG + TEXT_TYPE + COMMA_SEP +
+                    PQColumns.COLUMN_DATABASENAME + TEXT_TYPE + COMMA_SEP +
+                    " )";
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + PQColumns.TABLE_NAME;
+    PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(mainActivity.getApplicationContext());
 
     public DatabaseHandler() {}
 
@@ -74,41 +107,6 @@ public final class DatabaseHandler extends MainActivity {
         }
 
     }
-
-    /*
-     * This variables are defining the SQL statement for creating the database.
-     */
-    private static final String TEXT_TYPE = " TEXT";
-    private static final String COMMA_SEP = ",";
-    private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + PQColumns.TABLE_NAME + " (" +
-                    PQColumns._ID + " INTEGER PRIMARY KEY," +
-                    PQColumns.COLUMN_GC_CACHE_ID + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_NUMBER + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_NAME + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_OWNER + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_TYPE + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_TERRAIN + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_DIFFICULTY + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_CONTAINER + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_URL + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_NORTH_COORDS + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_EAST_COORDS + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_AVAILABLE + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_ARCHIVED + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_ATTRIBUTES + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_SHORT_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_LONG_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_HINT + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_OWN_FOUND_STATUS + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_OWN_FOUND_DATE + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_GC_OWN_LOG + TEXT_TYPE + COMMA_SEP +
-                    PQColumns.COLUMN_DATABASENAME + TEXT_TYPE + COMMA_SEP +
-            " )";
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + PQColumns.TABLE_NAME;
-    PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(mainActivity.getApplicationContext());
-
 
     public long writeIntoDB (String cacheID,String gcNumber,String gcName,String gcOwner,String gcType,String gcTerrain,String gcDifficulty,String gcContainer, String gcUrl,String gcNorthCoords,String gcEastCoords,String gcAvailable, String gcArchived,String gcAttributes,String gcShortDescription,String gcLongDescription,String gcHint,String gcOwnFoundStatus,String gcOwnFoundDate,String gcOwnLog,String database) {
         // Gets the data repository in write mode
