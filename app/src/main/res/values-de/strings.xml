@@ -4,14 +4,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="nav_header_main_text1">Welcome to SEUL</string>
-    <string name="nav_header_main_text3">Online contents currently not accessible</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="nav_header_main_text1">Willkommen SEUL</string>
+    <string name="nav_header_main_text2">Online Inhalte im Moment verfügbar!</string>
+    <string name="nav_header_main_text3">Online Inhalte im Moment nicht verfügbar!</string>
     <string name="nav_header_main_picContent">nav_header_main_mainpic</string>
-    <string name="activity_main_drawer_headline2">@string/action_settings</string>
-    <string name="activity_main_drawer_search">Search/filter</string>
-    <string name="activity_main_drawer_create">Create</string>
-    <string name="content_main_search">Name or GC-Number</string>
+    <string name="activity_main_drawer_headline2">Einstellungen</string>
+    <string name="activity_main_drawer_search">Suchen/filtern</string>
+    <string name="activity_main_drawer_create">Erstellen</string>
+    <string name="content_main_search">Name oder GC-Nummer</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -75,13 +76,14 @@
 
     <string name="title_activity_geocache_details">GeocacheDetails</string>
     <string name="title_activity_create_geocache_entry">CreateGeocacheEntry</string>
+    <string name="content_create_geocache_entry_GCNumber">GC-Nummer</string>
     <string name="content_create_geocache_entry_GCName">Cachename</string>
-    <string name="content_create_geocache_entry_GCSize">Size</string>
+    <string name="content_create_geocache_entry_GCSize">Größe</string>
     <string name="content_create_geocache_entry_GCT">Terrain</string>
     <string name="content_create_geocache_entry_">Difficulty</string>
-    <string name="content_create_geocache_entry_GCType">Cachetype</string>
-    <string name="content_create_geocache_entry_createshow">Create and display</string>
-    <string name="content_create_geocache_entry_create">Create</string>
+    <string name="content_create_geocache_entry_GCType">Cachetyp</string>
+    <string name="content_create_geocache_entry_createshow">Erstellen und anzeigen</string>
+    <string name="content_create_geocache_entry_create">Erstellen</string>
     <string-array name="terrainDiffuculty">
         <item>1</item>
         <item>1,5</item>
@@ -97,18 +99,16 @@
     <string-array name="content_main_noMatch">Keine Ergebnisse</string-array>
 
     <string name="fragment_geocache_details_pic_edit">edit</string>
-    <string name="fragment_geocache_details_log_ourLog">Our Log:</string>
-    <string name="fragment_geocache_details_log_date">Date</string>
+    <string name="fragment_geocache_details_log_ourLog">Unser Log:</string>
+    <string name="fragment_geocache_details_log_date">Datum</string>
 
-    <string name="GCTitle">Geocache title</string>
-    <string name="GCNumber">GC-Number</string>
+    <string name="GCTitle">Geocachetitel</string>
+    <string name="GCNumber">GC-Nummer</string>
     <string name="TerrainDifficulty">D:1,0 - T:1,0</string>
     <string name="DistanceToCache">~ 999,99 km</string>
     <string name="FavoritePoints">9999</string>
 
     <string name="fragment_geocache_details_details">Details</string>
     <string name="fragment_geocache_details_log">Logs</string>
-    <string name="fragment_geocache_details_waypoints">Waypoints</string>
-    <string name="content_create_geocache_entry_GCNumber">@string/GCNumber</string>
-    <string name="nav_header_main_text2">Online content currently accessible</string>
+    <string name="fragment_geocache_details_waypoints">Wegpunkte</string>
 </resources>
