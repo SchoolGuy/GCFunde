@@ -77,17 +77,19 @@ public class GeocacheListAdapter extends BaseAdapter {
      * @param parent Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
      */
     public View getView (int position, View convertView, ViewGroup parent) {
-        Holder holder = new Holder();
-        convertView = layoutInflater.inflate(R.layout.row_layout, null);
-        holder.GCTitles = (TextView) convertView.findViewById(R.id.txtFGCTitle);
-        holder.GCNames = (TextView) convertView.findViewById(R.id.txtFGCNumber);
-        holder.DifficultysTerrains = (TextView) convertView.findViewById(R.id.txtFDifficultyTerrain);
-        holder.DistancesToCaches = (TextView) convertView.findViewById(R.id.txtFDistanceToCache);
-        holder.FavPoints = (TextView) convertView.findViewById(R.id.txtFFavoritePoints);
-        holder.Symbol = (ImageView) convertView.findViewById(R.id.imgVType);
-        holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
-        holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
-        //set Befehle fehlen noch!
+        if (convertView != null) {
+            Holder holder = new Holder();
+            convertView = layoutInflater.inflate(R.layout.row_layout, null);
+            holder.GCTitles = (TextView) convertView.findViewById(R.id.txtFGCTitle);
+            holder.GCNames = (TextView) convertView.findViewById(R.id.txtFGCNumber);
+            holder.DifficultysTerrains = (TextView) convertView.findViewById(R.id.txtFDifficultyTerrain);
+            holder.DistancesToCaches = (TextView) convertView.findViewById(R.id.txtFDistanceToCache);
+            holder.FavPoints = (TextView) convertView.findViewById(R.id.txtFFavoritePoints);
+            holder.Symbol = (ImageView) convertView.findViewById(R.id.imgVType);
+            holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
+            holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
+            //set Befehle fehlen noch!
+        }
         return convertView;
     }
 }

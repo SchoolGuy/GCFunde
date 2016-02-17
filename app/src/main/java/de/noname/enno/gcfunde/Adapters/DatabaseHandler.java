@@ -12,15 +12,13 @@ import de.noname.enno.gcfunde.MainActivity;
  * @author Enno Gotthold
  * @version 0.1
  * This class represents the SQL Database that contains the caches.
- * This class was created with the help of the Google Android Tutorial, specifically {@link http://developer.android.com/training/basics/data-storage/databases.html}
+ * This class was created with the help of the Google Android Tutorial, specifically {@see http://developer.android.com/training/basics/data-storage/databases.html}
  */
 
 public final class DatabaseHandler extends MainActivity {
 
     MainActivity mainActivity = new MainActivity();
-    /*
-     * This variables are defining the SQL statement for creating the database.
-     */
+    /* This variables are defining the SQL statement for creating the database. */
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
@@ -54,9 +52,7 @@ public final class DatabaseHandler extends MainActivity {
 
     public DatabaseHandler() {}
 
-    /*
-     * This inner class defines the layout of the SQL Database
-     */
+    /* This inner class defines the layout of the SQL Database */
     public static abstract class PQColumns implements BaseColumns {
         public static final String TABLE_NAME = "Founds";
         public static final String COLUMN_GC_CACHE_ID = "Cache ID";
@@ -108,33 +104,36 @@ public final class DatabaseHandler extends MainActivity {
 
     }
 
-    public long writeIntoDB (String cacheID,String gcNumber,String gcName,String gcOwner,String gcType,String gcTerrain,String gcDifficulty,String gcContainer, String gcUrl,String gcNorthCoords,String gcEastCoords,String gcAvailable, String gcArchived,String gcAttributes,String gcShortDescription,String gcLongDescription,String gcHint,String gcOwnFoundStatus,String gcOwnFoundDate,String gcOwnLog,String database) {
+    public long writeIntoDB (Geocache geocache) {
         // Gets the data repository in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
+        //Convert string array to string.
+        StringToArray stringToArray = new StringToArray();
+
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(PQColumns.COLUMN_GC_CACHE_ID, cacheID);
-        values.put(PQColumns.COLUMN_GC_NUMBER, gcNumber);
-        values.put(PQColumns.COLUMN_GC_NAME, gcName);
-        values.put(PQColumns.COLUMN_GC_OWNER, gcOwner);
-        values.put(PQColumns.COLUMN_GC_TYPE, gcType);
-        values.put(PQColumns.COLUMN_GC_TERRAIN, gcTerrain);
-        values.put(PQColumns.COLUMN_GC_DIFFICULTY, gcDifficulty);
-        values.put(PQColumns.COLUMN_GC_CONTAINER, gcContainer);
-        values.put(PQColumns.COLUMN_GC_URL, gcUrl);
-        values.put(PQColumns.COLUMN_GC_NORTH_COORDS, gcNorthCoords);
-        values.put(PQColumns.COLUMN_GC_EAST_COORDS, gcEastCoords);
-        values.put(PQColumns.COLUMN_GC_AVAILABLE, gcAvailable);
-        values.put(PQColumns.COLUMN_GC_ARCHIVED, gcArchived);
-        values.put(PQColumns.COLUMN_GC_ATTRIBUTES, gcAttributes);
-        values.put(PQColumns.COLUMN_GC_SHORT_DESCRIPTION, gcShortDescription);
-        values.put(PQColumns.COLUMN_GC_LONG_DESCRIPTION, gcLongDescription);
-        values.put(PQColumns.COLUMN_GC_HINT, gcHint);
-        values.put(PQColumns.COLUMN_GC_OWN_FOUND_STATUS, gcOwnFoundStatus);
-        values.put(PQColumns.COLUMN_GC_OWN_FOUND_DATE, gcOwnFoundDate);
-        values.put(PQColumns.COLUMN_GC_OWN_LOG, gcOwnLog);
-        values.put(PQColumns.COLUMN_DATABASENAME,database);
+        values.put(PQColumns.COLUMN_GC_CACHE_ID, geocache.getCacheID());
+        values.put(PQColumns.COLUMN_GC_NUMBER, geocache.getGcNumber());
+        values.put(PQColumns.COLUMN_GC_NAME, geocache.getGcName());
+        values.put(PQColumns.COLUMN_GC_OWNER, geocache.getGcOwner());
+        values.put(PQColumns.COLUMN_GC_TYPE, geocache.getGcType());
+        values.put(PQColumns.COLUMN_GC_TERRAIN, geocache.getGcTerrain());
+        values.put(PQColumns.COLUMN_GC_DIFFICULTY, geocache.getGcDifficulty());
+        values.put(PQColumns.COLUMN_GC_CONTAINER, geocache.getGcContainer());
+        values.put(PQColumns.COLUMN_GC_URL, geocache.getGcUrl());
+        values.put(PQColumns.COLUMN_GC_NORTH_COORDS, geocache.getGcNorthCoords());
+        values.put(PQColumns.COLUMN_GC_EAST_COORDS, geocache.getGcEastCoords());
+        values.put(PQColumns.COLUMN_GC_AVAILABLE, geocache.getGcAvailable());
+        values.put(PQColumns.COLUMN_GC_ARCHIVED, geocache.getGcArchived());
+        values.put(PQColumns.COLUMN_GC_ATTRIBUTES, stringToArray.convertArrayToString(geocache.getGcAttributes()));
+        values.put(PQColumns.COLUMN_GC_SHORT_DESCRIPTION, geocache.getGcShortDescription());
+        values.put(PQColumns.COLUMN_GC_LONG_DESCRIPTION, geocache.getGcLongDescription());
+        values.put(PQColumns.COLUMN_GC_HINT, geocache.getGcHint());
+        values.put(PQColumns.COLUMN_GC_OWN_FOUND_STATUS, geocache.getGcOwnFoundStatus());
+        values.put(PQColumns.COLUMN_GC_OWN_FOUND_DATE, geocache.getGcOwnFoundDate());
+        values.put(PQColumns.COLUMN_GC_OWN_LOG, geocache.getGcOwnLog());
+        values.put(PQColumns.COLUMN_DATABASENAME,geocache.getDatabase());
 
         return db.insert(
                 PQColumns.TABLE_NAME,
