@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import de.noname.enno.gcfunde.R;
 
 /*
@@ -62,34 +63,34 @@ public class GeocacheListAdapter extends BaseAdapter {
         return position;
     }
 
-
-    /*
-     * This class should contain the parts that one element should have. Why? Don't know. Source: {@link http://stackoverflow.com/questions/35240906/using-an-external-xml-file-for-custom-list-view-adapter}
-     */
-    public class Holder {
-        TextView GCTitles,GCNames,DifficultysTerrains,DistancesToCaches,FavPoints;
-        ImageView Symbol,Direction,FavSymbol;
-    }
-
     /*
      * @param position This is the position that the item that will be created is having.
      * @param convertView Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
      * @param parent Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
      */
-    public View getView (int position, View convertView, ViewGroup parent) {
-        if (convertView != null) {
-            Holder holder = new Holder();
-            convertView = layoutInflater.inflate(R.layout.row_layout, null);
-            holder.GCTitles = (TextView) convertView.findViewById(R.id.txtFGCTitle);
-            holder.GCNames = (TextView) convertView.findViewById(R.id.txtFGCNumber);
-            holder.DifficultysTerrains = (TextView) convertView.findViewById(R.id.txtFDifficultyTerrain);
-            holder.DistancesToCaches = (TextView) convertView.findViewById(R.id.txtFDistanceToCache);
-            holder.FavPoints = (TextView) convertView.findViewById(R.id.txtFFavoritePoints);
-            holder.Symbol = (ImageView) convertView.findViewById(R.id.imgVType);
-            holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
-            holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
-            //set Befehle fehlen noch!
-        }
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView != null)
+            return convertView;
+
+        Holder holder = new Holder();
+        convertView = layoutInflater.inflate(R.layout.row_layout, null);
+        holder.GCTitles = (TextView) convertView.findViewById(R.id.txtFGCTitle);
+        holder.GCNames = (TextView) convertView.findViewById(R.id.txtFGCNumber);
+        holder.DifficultysTerrains = (TextView) convertView.findViewById(R.id.txtFDifficultyTerrain);
+        holder.DistancesToCaches = (TextView) convertView.findViewById(R.id.txtFDistanceToCache);
+        holder.FavPoints = (TextView) convertView.findViewById(R.id.txtFFavoritePoints);
+        holder.Symbol = (ImageView) convertView.findViewById(R.id.imgVType);
+        holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
+        holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
+        //set Befehle fehlen noch!
         return convertView;
+    }
+
+    /*
+     * This class should contain the parts that one element should have. Why? Don't know. Source: {@link http://stackoverflow.com/questions/35240906/using-an-external-xml-file-for-custom-list-view-adapter}
+     */
+    public class Holder {
+        TextView GCTitles, GCNames, DifficultysTerrains, DistancesToCaches, FavPoints;
+        ImageView Symbol, Direction, FavSymbol;
     }
 }
