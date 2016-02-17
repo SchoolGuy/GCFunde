@@ -6,7 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import de.noname.enno.gcfunde.MainActivity;
+
+import de.noname.enno.gcfunde.Activities.MainActivity;
 
 /*
  * @author Enno Gotthold
@@ -17,7 +18,6 @@ import de.noname.enno.gcfunde.MainActivity;
 
 public final class DatabaseHandler extends MainActivity {
 
-    MainActivity mainActivity = new MainActivity();
     /*
      * This variables are defining the SQL statement for creating the database.
      */
@@ -50,63 +50,10 @@ public final class DatabaseHandler extends MainActivity {
                     " )";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PQColumns.TABLE_NAME;
+    MainActivity mainActivity = new MainActivity();
     PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(mainActivity.getApplicationContext());
 
     public DatabaseHandler() {}
-
-    /*
-     * This inner class defines the layout of the SQL Database
-     */
-    public static abstract class PQColumns implements BaseColumns {
-        public static final String TABLE_NAME = "Founds";
-        public static final String COLUMN_GC_CACHE_ID = "Cache ID";
-        public static final String COLUMN_GC_NUMBER = "Number";
-        public static final String COLUMN_GC_NAME = "Name";
-        public static final String COLUMN_GC_TERRAIN = "Terrain";
-        public static final String COLUMN_GC_DIFFICULTY = "Difficulty";
-        public static final String COLUMN_GC_URL = "Url";
-        public static final String COLUMN_GC_AVAILABLE = "Available";
-        public static final String COLUMN_GC_ARCHIVED = "Archived";
-        public static final String COLUMN_GC_OWNER = "Owner";
-        public static final String COLUMN_GC_CONTAINER = "Container";
-        public static final String COLUMN_GC_TYPE = "Type";
-        public static final String COLUMN_GC_ATTRIBUTES = "Attributes";
-        public static final String COLUMN_GC_SHORT_DESCRIPTION = "Short Description";
-        public static final String COLUMN_GC_LONG_DESCRIPTION = "Long Description";
-        public static final String COLUMN_GC_HINT = "Hint";
-        public static final String COLUMN_GC_OWN_FOUND_STATUS = "Found Type";
-        public static final String COLUMN_GC_OWN_FOUND_DATE = "Found Date";
-        public static final String COLUMN_GC_OWN_LOG = "Own Log";
-        public static final String COLUMN_GC_NORTH_COORDS = "North Coords";
-        public static final String COLUMN_GC_EAST_COORDS = "East Coords";
-        public static final String COLUMN_DATABASENAME = "Database Name";
-    }
-
-    public class PoketQueryDBHelper extends SQLiteOpenHelper {
-        // If you change the database schema, you must increment the database version.
-        public static final int DATABASE_VERSION = 1;
-        public static final String DATABASE_NAME = "Founds.db";
-
-        public PoketQueryDBHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
-
-        public void onCreate(SQLiteDatabase db) {
-            db.execSQL(SQL_CREATE_ENTRIES);
-        }
-
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            // This database is only a cache for online data, so its upgrade policy is
-            // to simply to discard the data and start over
-            db.execSQL(SQL_DELETE_ENTRIES);
-            onCreate(db);
-        }
-
-        public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            onUpgrade(db, oldVersion, newVersion);
-        }
-
-    }
 
     public long writeIntoDB (String cacheID,String gcNumber,String gcName,String gcOwner,String gcType,String gcTerrain,String gcDifficulty,String gcContainer, String gcUrl,String gcNorthCoords,String gcEastCoords,String gcAvailable, String gcArchived,String gcAttributes,String gcShortDescription,String gcLongDescription,String gcHint,String gcOwnFoundStatus,String gcOwnFoundDate,String gcOwnLog,String database) {
         // Gets the data repository in write mode
@@ -215,5 +162,59 @@ public final class DatabaseHandler extends MainActivity {
                 values,
                 selection,
                 selectionArgs);
+    }
+
+    /*
+     * This inner class defines the layout of the SQL Database
+     */
+    public static abstract class PQColumns implements BaseColumns {
+        public static final String TABLE_NAME = "Founds";
+        public static final String COLUMN_GC_CACHE_ID = "Cache ID";
+        public static final String COLUMN_GC_NUMBER = "Number";
+        public static final String COLUMN_GC_NAME = "Name";
+        public static final String COLUMN_GC_TERRAIN = "Terrain";
+        public static final String COLUMN_GC_DIFFICULTY = "Difficulty";
+        public static final String COLUMN_GC_URL = "Url";
+        public static final String COLUMN_GC_AVAILABLE = "Available";
+        public static final String COLUMN_GC_ARCHIVED = "Archived";
+        public static final String COLUMN_GC_OWNER = "Owner";
+        public static final String COLUMN_GC_CONTAINER = "Container";
+        public static final String COLUMN_GC_TYPE = "Type";
+        public static final String COLUMN_GC_ATTRIBUTES = "Attributes";
+        public static final String COLUMN_GC_SHORT_DESCRIPTION = "Short Description";
+        public static final String COLUMN_GC_LONG_DESCRIPTION = "Long Description";
+        public static final String COLUMN_GC_HINT = "Hint";
+        public static final String COLUMN_GC_OWN_FOUND_STATUS = "Found Type";
+        public static final String COLUMN_GC_OWN_FOUND_DATE = "Found Date";
+        public static final String COLUMN_GC_OWN_LOG = "Own Log";
+        public static final String COLUMN_GC_NORTH_COORDS = "North Coords";
+        public static final String COLUMN_GC_EAST_COORDS = "East Coords";
+        public static final String COLUMN_DATABASENAME = "Database Name";
+    }
+
+    public class PoketQueryDBHelper extends SQLiteOpenHelper {
+        // If you change the database schema, you must increment the database version.
+        public static final int DATABASE_VERSION = 1;
+        public static final String DATABASE_NAME = "Founds.db";
+
+        public PoketQueryDBHelper(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL(SQL_CREATE_ENTRIES);
+        }
+
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // This database is only a cache for online data, so its upgrade policy is
+            // to simply to discard the data and start over
+            db.execSQL(SQL_DELETE_ENTRIES);
+            onCreate(db);
+        }
+
+        public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            onUpgrade(db, oldVersion, newVersion);
+        }
+
     }
 }
