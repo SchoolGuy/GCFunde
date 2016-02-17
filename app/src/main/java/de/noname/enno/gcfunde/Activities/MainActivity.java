@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import de.noname.enno.gcfunde.Adapters.Geocache;
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
 import de.noname.enno.gcfunde.R;
 
@@ -47,8 +50,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //List View
         l = (ListView) findViewById(R.id.list);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, days, days, days, days, days, this); //Parameter days is currently just here to guarantee that the app can be tested.
-        l.setAdapter(adapter1);
+        ArrayList<Geocache> geocaches = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+            geocaches.add(new Geocache(getApplicationContext()));
+        l.setAdapter(new GeocacheListAdapter(getApplicationContext(), geocaches));
     }
 
     @Override

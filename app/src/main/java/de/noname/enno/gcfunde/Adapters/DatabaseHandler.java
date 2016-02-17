@@ -14,10 +14,8 @@ import android.provider.BaseColumns;
  * This class was created with the help of the Google Android Tutorial, specifically {@link http://developer.android.com/training/basics/data-storage/databases.html}
  */
 
-public final class DatabaseHandler extends de.noname.enno.gcfunde.Activities.MainActivity {
+public final class DatabaseHandler {
 
-    de.noname.enno.gcfunde.Activities.MainActivity mainActivity = new de.noname.enno.gcfunde.Activities.MainActivity();
-    /* This variables are defining the SQL statement for creating the database. */
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
@@ -47,9 +45,13 @@ public final class DatabaseHandler extends de.noname.enno.gcfunde.Activities.Mai
                     " )";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PQColumns.TABLE_NAME;
-    PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(mainActivity.getApplicationContext());
+    /* This variables are defining the SQL statement for creating the database. */
+    Context context;
+    PoketQueryDBHelper mDbHelper = new PoketQueryDBHelper(context);
 
-    public DatabaseHandler() {}
+    public DatabaseHandler(Context context) {
+        this.context = context;
+    }
 
     public long writeIntoDB (Geocache geocache) {
         // Gets the data repository in write mode

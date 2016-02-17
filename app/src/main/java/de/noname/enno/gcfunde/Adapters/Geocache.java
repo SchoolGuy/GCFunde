@@ -1,5 +1,7 @@
 package de.noname.enno.gcfunde.Adapters;
 
+import android.content.Context;
+
 /**
  * @author Enno Gotthold
  * @version 0.1
@@ -8,14 +10,44 @@ package de.noname.enno.gcfunde.Adapters;
 
 public class Geocache {
 
-    DatabaseHandler databaseHandler = new DatabaseHandler();
+    DatabaseHandler databaseHandler;
+    Context context;
     String cacheID, gcNumber, gcName, gcOwner, gcType, gcTerrain, gcDifficulty, gcContainer, gcUrl, gcNorthCoords, gcEastCoords, gcAvailable, gcArchived;
     String gcShortDescription, gcLongDescription, gcHint, gcOwnFoundStatus, gcOwnFoundDate, gcOwnLog, database;
     String[] gcAttributes;
 
-    public Geocache (String ID, String Number, String Name, String Owner, String Type, String Terrain, String Difficulty, String Container, String Url, String NorthCoords,
+    public Geocache(Context context) {
+        this.context = context;
+        databaseHandler = new DatabaseHandler(context);
+        setCacheID("");
+        setGcNumber("");
+        setGcName("");
+        setGcOwner("");
+        setGcType("");
+        setGcTerrain("");
+        setGcDifficulty("");
+        setGcContainer("");
+        setGcUrl("");
+        setGcNorthCoords("");
+        setGcEastCoords("");
+        setGcAvailable("");
+        setGcArchived("");
+        setGcAttributes(new String[]{""});
+        setGcShortDescription("");
+        setGcLongDescription("");
+        setGcHint("");
+        setGcOwnFoundStatus("");
+        setGcOwnFoundDate("");
+        setGcOwnLog("");
+        setDatabase("");
+        // databaseHandler.writeIntoDB(this);
+    }
+
+    public Geocache(Context context, String ID, String Number, String Name, String Owner, String Type, String Terrain, String Difficulty, String Container, String Url, String NorthCoords,
                      String EastCoords, String Available, String Archived, String[] Attributes, String ShortDescription, String LongDescription, String Hint, String OwnFoundStatus,
                      String OwnFoundDate, String OwnLog, String Database) {
+        this.context = context;
+        databaseHandler = new DatabaseHandler(context);
         setCacheID(ID);
         setGcNumber(Number);
         setGcName(Name);
