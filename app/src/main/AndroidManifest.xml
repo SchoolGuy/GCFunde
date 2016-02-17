@@ -19,30 +19,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activitys.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.noname.enno.gcfunde.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".GeocacheDetails"
+            android:name=".Activitys.GeocacheDetails"
             android:label="@string/title_activity_geocache_details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.noname.enno.gcfunde.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".CreateGeocacheEntry"
+            android:name=".Activitys.CreateGeocacheEntry"
             android:label="@string/title_activity_create_geocache_entry"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.noname.enno.gcfunde.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
     </application>
 

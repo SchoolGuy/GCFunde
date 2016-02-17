@@ -1,54 +1,51 @@
-package de.noname.enno.gcfunde;
+package de.noname.enno.gcfunde.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.*;
-import android.widget.ListView;
-import de.noname.enno.gcfunde.Activitys.CreateGeocacheEntry;
-import de.noname.enno.gcfunde.Activitys.GeocacheDetails;
-import de.noname.enno.gcfunde.Activitys.SettingsActivity;
-import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import de.noname.enno.gcfunde.MainActivity;
+import de.noname.enno.gcfunde.R;
 /*
  * @author Enno Gotthold
  * @version 0.1
- * This class is the Main Acitivity for this Android App.
- * It contains a List View
- */
+*/
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ListView l;
-    String [] days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+public class CreateGeocacheEntry extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //This presents the action bar
+        setContentView(R.layout.activity_create_geocache_entry);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Navigatition View
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //List View
-        l = (ListView) findViewById(R.id.list);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter (days,days,days,days,days,days,this); //Parameter days is currently just here to guarantee that the app can be tested.
-        l.setAdapter(adapter1);
+        //Spinner
+        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spinner4 = (Spinner) findViewById(R.id.spinner4);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.terrainDiffuculty, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(adapter);
+        spinner4.setAdapter(adapter);
     }
 
     @Override
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.create_geocache_entry, menu);
         return true;
     }
 
@@ -90,39 +87,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_search) {
-            //Do nothing
-        } else if (id == R.id.nav_create) {
-            Intent intent = new Intent(this, CreateGeocacheEntry.class);
+            Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_create) {
+            //
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_deatails) {
-            Intent intent = new Intent(this, GeocacheDetails.class);
             startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    /* Checks if external storage is available for read and write */
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
-    }
-
-    /* Checks if external storage is available to at least read */
-    public boolean isExternalStorageReadable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
-        }
-        return false;
     }
 }
