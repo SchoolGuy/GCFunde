@@ -77,7 +77,7 @@ public class GeocacheListAdapter extends BaseAdapter {
      * @param parent Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
      */
     public View getView (int position, View convertView, ViewGroup parent) {
-        if (convertView != null) {
+        //if (convertView != null) {
             Holder holder = new Holder();
             convertView = layoutInflater.inflate(R.layout.row_layout, null);
             holder.GCTitles = (TextView) convertView.findViewById(R.id.txtFGCTitle);
@@ -89,7 +89,7 @@ public class GeocacheListAdapter extends BaseAdapter {
             holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
             holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
             //set Befehle fehlen noch!
-        }
+        //}
         return convertView;
     }
 }

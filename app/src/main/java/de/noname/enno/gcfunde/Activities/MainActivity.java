@@ -16,6 +16,8 @@ import android.widget.ListView;
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
 import de.noname.enno.gcfunde.R;
 
+import java.io.File;
+
 /*
  * @author Enno Gotthold
  * @version 0.1
@@ -49,6 +51,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         l = (ListView) findViewById(R.id.list);
         GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, days, days, days, days, days, this); //Parameter days is currently just here to guarantee that the app can be tested.
         l.setAdapter(adapter1);
+
+        //Create folder for PoketQuerys at sdcard.
+        String folder_main = "GCFunde";
+
+        File f = new File(Environment.getExternalStorageDirectory(), folder_main);
+        if (!f.exists()) {
+            f.mkdirs();
+        }
     }
 
     @Override

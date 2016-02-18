@@ -13,7 +13,7 @@
     <string name="activity_main_drawer_search">Suchen/filtern</string>
     <string name="activity_main_drawer_create">Erstellen</string>
     <string name="content_main_search">Name oder GC-Nummer</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">Einstellungen</string>
 
     <!-- Strings related to Settings -->
 

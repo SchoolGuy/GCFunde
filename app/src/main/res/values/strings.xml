@@ -73,8 +73,8 @@
     <string name="pref_title_vibrate">Vibrate</string>
 
 
-    <string name="title_activity_geocache_details">GeocacheDetails</string>
-    <string name="title_activity_create_geocache_entry">CreateGeocacheEntry</string>
+    <string name="title_activity_geocache_details">Geocache Details</string>
+    <string name="title_activity_create_geocache_entry">Erstelle Cache in Datenbank</string>
     <string name="content_create_geocache_entry_GCName">Cachename</string>
     <string name="content_create_geocache_entry_GCSize">Size</string>
     <string name="content_create_geocache_entry_GCT">Terrain</string>
