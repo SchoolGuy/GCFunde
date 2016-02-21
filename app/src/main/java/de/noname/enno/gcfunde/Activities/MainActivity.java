@@ -1,6 +1,10 @@
 package de.noname.enno.gcfunde.Activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.NavigationView;
@@ -9,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -16,7 +21,7 @@ import android.widget.ListView;
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
 import de.noname.enno.gcfunde.R;
 
-import java.io.File;
+import java.io.*;
 
 /*
  * @author Enno Gotthold
@@ -28,6 +33,7 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ListView l;
     String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +58,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, days, days, days, days, days, this); //Parameter days is currently just here to guarantee that the app can be tested.
         l.setAdapter(adapter1);
 
-        //Create folder for PoketQuerys at sdcard.
-        String folder_main = "GCFunde";
-
-        File f = new File(Environment.getExternalStorageDirectory(), folder_main);
-        if (!f.exists()) {
-            f.mkdirs();
-        }
+        //Create folder for PoketQuerys at sdcard. I know I am using a hardcoded String at the end, but I tried several other solutions and this is the only working one, sry :/
+        File Directory = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/");
+        Directory.mkdirs();
     }
 
     @Override

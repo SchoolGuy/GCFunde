@@ -1,6 +1,11 @@
 package de.noname.enno.gcfunde.Activities;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +13,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +24,8 @@ import de.noname.enno.gcfunde.Fragments.fragment_geocache_details;
 import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_log;
 import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_waypoints;
 import de.noname.enno.gcfunde.R;
+
+import java.io.*;
 
 /*
  * @author Enno Gotthold
@@ -38,6 +46,7 @@ public class GeocacheDetails extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -63,7 +72,6 @@ public class GeocacheDetails extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
     }
 
     @Override
