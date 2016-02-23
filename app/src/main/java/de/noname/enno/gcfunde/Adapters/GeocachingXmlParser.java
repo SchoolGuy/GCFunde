@@ -9,7 +9,6 @@ package de.noname.enno.gcfunde.Adapters;
 
 import android.app.Activity;
 import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.util.Log;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -37,7 +36,7 @@ public class GeocachingXmlParser extends Activity {
         InputStreamReader inputStreamReader = null;
         BufferedReader bufferedReader = null;
         try {
-            fileInputStream = openFileInput (ExternalAppBasePath + "3211604");
+            fileInputStream = openFileInput (ExternalAppBasePath + "3211604.gpx");
             inputStreamReader = new InputStreamReader(fileInputStream);
             bufferedReader = new BufferedReader(inputStreamReader);
             String s;
@@ -65,13 +64,10 @@ public class GeocachingXmlParser extends Activity {
         Document doc = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
-
             DocumentBuilder db = dbf.newDocumentBuilder();
-
             InputSource is = new InputSource();
             is.setCharacterStream(new StringReader(xml));
             doc = db.parse(is);
-
         } catch (ParserConfigurationException e) {
             Log.e("Error: ", e.getMessage());
             return null;
