@@ -42,7 +42,7 @@ import de.noname.enno.gcfunde.R;
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
     /**
-     * A preference value change listener that updates the preference's summary
+     * A preference value change listener that updates the preference's desc
      * to reflect its new value.
      */
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
@@ -56,7 +56,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
 
-                // Set the summary to reflect the new value.
+                // Set the desc to reflect the new value.
                 preference.setSummary(
                         index >= 0
                                 ? listPreference.getEntries()[index]
@@ -74,10 +74,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                             preference.getContext(), Uri.parse(stringValue));
 
                     if (ringtone == null) {
-                        // Clear the summary if there was a lookup error.
+                        // Clear the desc if there was a lookup error.
                         preference.setSummary(null);
                     } else {
-                        // Set the summary to reflect the new ringtone display
+                        // Set the desc to reflect the new ringtone display
                         // name.
                         String name = ringtone.getTitle(preference.getContext());
                         preference.setSummary(name);
@@ -85,7 +85,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 }
 
             } else {
-                // For all other preferences, set the summary to the value's
+                // For all other preferences, set the desc to the value's
                 // simple string representation.
                 preference.setSummary(stringValue);
             }
@@ -103,9 +103,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
+     * Binds a preference's desc to its value. More specifically, when the
+     * preference's value is changed, its desc (line of text below the
+     * preference time) is updated to reflect the value. The desc is also
      * immediately updated upon calling this method. The exact display format is
      * dependent on the type of preference.
      *

@@ -64,7 +64,7 @@ public class GeocacheListAdapter extends BaseAdapter {
 
 
     /*
-     * This class should contain the parts that one element should have. Why? Don't know. Source: {@link http://stackoverflow.com/questions/35240906/using-an-external-xml-file-for-custom-list-view-adapter}
+     * This class should contain the parts that one element should have. Why? Don't know. Source: {@name http://stackoverflow.com/questions/35240906/using-an-external-xml-file-for-custom-list-view-adapter}
      */
     public class Holder {
         TextView GCTitles,GCNames,DifficultysTerrains,DistancesToCaches,FavPoints;
@@ -73,8 +73,8 @@ public class GeocacheListAdapter extends BaseAdapter {
 
     /*
      * @param position This is the position that the item that will be created is having.
-     * @param convertView Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
-     * @param parent Sry no idea, just look into the tutorial I used {@link http://www.vogella.com/tutorials/AndroidListView/article.html}
+     * @param convertView Sry no idea, just look into the tutorial I used {@name http://www.vogella.com/tutorials/AndroidListView/article.html}
+     * @param parent Sry no idea, just look into the tutorial I used {@name http://www.vogella.com/tutorials/AndroidListView/article.html}
      */
     public View getView (int position, View convertView, ViewGroup parent) {
         //if (convertView != null) {

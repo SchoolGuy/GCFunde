@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
  * @author Enno Gotthold
  * @version 0.1
  * This class represents the SQL Database that contains the caches.
- * This class was created with the help of the Google Android Tutorial, specifically {@link http://developer.android.com/training/basics/data-storage/databases.html}
+ * This class was created with the help of the Google Android Tutorial, specifically {@name http://developer.android.com/training/basics/data-storage/databases.html}
  */
 
 public final class DatabaseHandler extends de.noname.enno.gcfunde.Activities.MainActivity {

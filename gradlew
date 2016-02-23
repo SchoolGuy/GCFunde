@@ -48,16 +48,16 @@ if $cygwin ; then
 fi
 
 # Attempt to set APP_HOME
-# Resolve links: $0 may be a link
+# Resolve links: $0 may be a name
 PRG="$0"
 # Need this for relative symlinks.
 while [ -h "$PRG" ] ; do
     ls=`ls -ld "$PRG"`
-    link=`expr "$ls" : '.*-> \(.*\)$'`
-    if expr "$link" : '/.*' > /dev/null; then
-        PRG="$link"
+    name=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$name" : '/.*' > /dev/null; then
+        PRG="$name"
     else
-        PRG=`dirname "$PRG"`"/$link"
+        PRG=`dirname "$PRG"`"/$name"
     fi
 done
 SAVED="`pwd`"

@@ -9,20 +9,10 @@ package de.noname.enno.gcfunde.Adapters;
 
 import android.app.Activity;
 import android.os.Environment;
-import android.util.Log;
 import android.util.Xml;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,21 +60,60 @@ public class GeocachingXmlParser extends Activity {
         return entries;
     }
 
-    public static class Entry {
-        public final String title;
-        public final String link;
-        public final String summary;
+    public static class Cache {
+        public final String time; // Placed date
+        public final String name; // GC-Code
+        public final String desc; // GC-Name with Short informations
+        public final String url;
+        public final String urlname;
+        public final String sym;
+        public final String type;
+        public final String groundspeakName;
+        public final String groundspeakPlacedBy;
+        public final String groundspeakOwner;
+        public final String groundspeakType;
+        public final String groundspeakContainer;
+        public final String groundspeakAttributes;
+        public final String groundspeakDifficulty;
+        public final String groundspeakTerrain;
+        public final String groundspeakCountry;
+        public final String groundspeakState;
+        public final String groundspeakShortDescription;
+        public final String groundspeakLongDescription;
+        public final String groundspeakEncodedHints;
+        public final String groundspeakLogsLog;
 
-        private Entry(String title, String summary, String link) {
-            this.title = title;
-            this.summary = summary;
-            this.link = link;
+        private Cache(String time, String desc, String name, String url, String urlname, String sym, String type, String groundspeakName, String groundspeakPlacedBy,
+                      String groundspeakOwner, String groundspeakType, String groundspeakContainer, String groundspeakAttributes, String groundspeakDifficulty,
+                      String groundspeakTerrain, String groundspeakCountry, String groundspeakState, String groundspeakShortDescription, String groundspeakLongDescription,
+                      String groundspeakEncodedHints, String groundspeakLogsLog) {
+            this.time = time;
+            this.desc = desc;
+            this.name = name;
+            this.url = url;
+            this.urlname = urlname;
+            this.sym = sym;
+            this.type = type;
+            this.groundspeakName = groundspeakName;
+            this.groundspeakPlacedBy = groundspeakPlacedBy;
+            this.groundspeakOwner = groundspeakOwner;
+            this.groundspeakType = groundspeakType;
+            this.groundspeakContainer = groundspeakContainer;
+            this.groundspeakAttributes = groundspeakAttributes;
+            this.groundspeakDifficulty = groundspeakDifficulty;
+            this.groundspeakTerrain = groundspeakTerrain;
+            this.groundspeakCountry = groundspeakCountry;
+            this.groundspeakState = groundspeakState;
+            this.groundspeakShortDescription = groundspeakShortDescription;
+            this.groundspeakLongDescription = groundspeakLongDescription;
+            this.groundspeakEncodedHints = groundspeakEncodedHints;
+            this.groundspeakLogsLog = groundspeakLogsLog;
         }
     }
 
-    // Parses the contents of an entry. If it encounters a title, summary, or link tag, hands them off
-// to their respective "read" methods for processing. Otherwise, skips the tag.
-    private Entry readEntry(XmlPullParser parser) throws XmlPullParserException, IOException {
+    // Parses the contents of an entry. If it encounters a time, desc, or name tag, hands them off
+    // to their respective "read" methods for processing. Otherwise, skips the tag.
+    private Cache readEntry(XmlPullParser parser) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "entry");
         String title = null;
         String summary = null;
@@ -94,52 +123,54 @@ public class GeocachingXmlParser extends Activity {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("title")) {
+            if (name.equals("time")) {
                 title = readTitle(parser);
-            } else if (name.equals("summary")) {
+            } else if (name.equals("desc")) {
                 summary = readSummary(parser);
-            } else if (name.equals("link")) {
+            } else if (name.equals("name")) {
                 link = readLink(parser);
             } else {
                 skip(parser);
             }
         }
-        return new Entry(title, summary, link);
+        return new Cache(title, summary, link, url, urlname, sym, type, groundspeakName, groundspeakPlacedBy, groundspeakOwner, groundspeakType,
+                groundspeakContainer, groundspeakAttributes, groundspeakDifficulty, groundspeakTerrain, groundspeakCountry, groundspeakState,
+                groundspeakShortDescription, groundspeakLongDescription, groundspeakEncodedHints, groundspeakLogsLog);
     }
 
-    // Processes title tags in the feed.
+    // Processes time tags in the feed.
     private String readTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "title");
+        parser.require(XmlPullParser.START_TAG, ns, "time");
         String title = readText(parser);
-        parser.require(XmlPullParser.END_TAG, ns, "title");
+        parser.require(XmlPullParser.END_TAG, ns, "time");
         return title;
     }
 
-    // Processes link tags in the feed.
+    // Processes name tags in the feed.
     private String readLink(XmlPullParser parser) throws IOException, XmlPullParserException {
         String link = "";
-        parser.require(XmlPullParser.START_TAG, ns, "link");
+        parser.require(XmlPullParser.START_TAG, ns, "name");
         String tag = parser.getName();
         String relType = parser.getAttributeValue(null, "rel");
-        if (tag.equals("link")) {
+        if (tag.equals("name")) {
             if (relType.equals("alternate")){
                 link = parser.getAttributeValue(null, "href");
                 parser.nextTag();
             }
         }
-        parser.require(XmlPullParser.END_TAG, ns, "link");
+        parser.require(XmlPullParser.END_TAG, ns, "name");
         return link;
     }
 
-    // Processes summary tags in the feed.
+    // Processes desc tags in the feed.
     private String readSummary(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "summary");
+        parser.require(XmlPullParser.START_TAG, ns, "desc");
         String summary = readText(parser);
-        parser.require(XmlPullParser.END_TAG, ns, "summary");
+        parser.require(XmlPullParser.END_TAG, ns, "desc");
         return summary;
     }
 
-    // For the tags title and summary, extracts their text values.
+    // For the tags time and desc, extracts their text values.
     private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
         String result = "";
         if (parser.next() == XmlPullParser.TEXT) {
