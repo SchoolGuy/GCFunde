@@ -9,19 +9,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
-import de.noname.enno.gcfunde.Adapters.GeocachingXmlParser;
-import de.noname.enno.gcfunde.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
+
+import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
+import de.noname.enno.gcfunde.Adapters.GeocachingXmlParser;
+import de.noname.enno.gcfunde.R;
 
 /*
  * @author Enno Gotthold
@@ -31,10 +33,9 @@ import java.util.ArrayList;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ListView l;
-    String ExternalAppBasePath;
-    String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     private static final String TAG = MainActivity.class.getSimpleName();
+    ListView l;
+    String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,28 +57,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Create folder for PoketQuerys at sdcard. I know I am using a hardcoded String at the end, but I tried several
         // other solutions and this is the only working one, sry :/
-        File Directory = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/");
-        ExternalAppBasePath = Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/";
-        Directory.mkdirs();
+        File directory = new File(Environment.getExternalStorageDirectory(), "GCFunde");
+        if (!directory.exists()) {
+            Log.d("Dir2Make", directory.getAbsolutePath());
+            Log.d("MadeDir?", String.valueOf(directory.mkdir()));
+            directory.setReadable(true);
+            directory.setWritable(true);
+            directory.setExecutable(true);
+        } else Log.d("Exists", directory.getAbsolutePath());
 
         // Read Pocket Query
         GeocachingXmlParser parser = new GeocachingXmlParser();
-        String xml = parser.load();
-        Document document = parser.getDomElement (xml);
-        NodeList nl = document.getElementsByTagName("name");
+        String xml = parser.load(new File(directory, "3211604.gpx"));
+        String gcCode[] = new String[0];
+        if (xml != null) {
+            Document doc = parser.getDomElement(xml);
+            if (doc != null) {
+                NodeList nl = doc.getElementsByTagName("name");
 
-        ArrayList<String> gcCodeAL = new ArrayList<String>();
-        // looping through all item nodes <item>
-        for (int i = 0; i < nl.getLength(); i++) {
-            Element e = (Element) nl.item(i);
-            gcCodeAL.add(parser.getValue(e,"name")); // name child value
+                ArrayList<String> gcCodeAL = new ArrayList<>();
+                // looping through all item nodes <item>
+                for (int i = 0; i < nl.getLength(); i++) {
+                    Element e = (Element) nl.item(i);
+                    gcCodeAL.add(parser.getValue(e, "name")); // name child value
+                }
+                gcCode = new String[0];
+                gcCodeAL.toArray(gcCode);
+            }
         }
 
         // List View
         l = (ListView) findViewById(R.id.list);
-        // Parameter days is currently just here to guarantee that the app can be tested.
-        String gcCode[] = new String[0];
-        gcCodeAL.toArray(gcCode);
+        // Parameter days is currently just here to guarantee that the app can be tested
         GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, gcCode, days, days, days, days, this);
         l.setAdapter(adapter1);
     }

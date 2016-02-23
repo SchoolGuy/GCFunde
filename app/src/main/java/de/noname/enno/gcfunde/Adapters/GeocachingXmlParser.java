@@ -8,82 +8,78 @@ package de.noname.enno.gcfunde.Adapters;
  */
 
 import android.app.Activity;
-import android.os.Environment;
-import android.provider.DocumentsContract;
-import android.util.Log;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
 
 public class GeocachingXmlParser extends Activity {
 
-    private String ExternalAppBasePath;
     private static final String TAG = GeocachingXmlParser.class.getSimpleName();
 
-    public GeocachingXmlParser(){
-        ExternalAppBasePath = Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/";
+    public GeocachingXmlParser() {
     }
 
-    public String load () {
-        StringBuilder stringBuilder = new StringBuilder();
-        FileInputStream fileInputStream = null;
-        InputStreamReader inputStreamReader = null;
-        BufferedReader bufferedReader = null;
+    public String load(File file) {
+        String str = "";
+        FileInputStream fileInputStream;
+        InputStreamReader isr = null;
+        BufferedReader bis = null;
         try {
-            fileInputStream = openFileInput (ExternalAppBasePath + "3211604");
-            inputStreamReader = new InputStreamReader(fileInputStream);
-            bufferedReader = new BufferedReader(inputStreamReader);
-            String s;
-            while ((s = bufferedReader.readLine()) != null) {
-                if (stringBuilder.length() > 0) {
-                    stringBuilder.append('\n');
-                }
-                stringBuilder.append(s);
-            }
-        } catch (IOException t) {
-            Log.e(TAG, "load()",t);
+            fileInputStream = new FileInputStream(file);
+            isr = new InputStreamReader(fileInputStream);
+            bis = new BufferedReader(isr);
+            for (String s = "";
+                 s != null;
+                 s = bis.readLine())
+                str += s;
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         } finally {
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    Log.e(TAG,"br.close()",e);
-                }
+            try {
+                if (bis != null)
+                    bis.close();
+                if (isr != null)
+                    isr.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
             }
         }
-        return  stringBuilder.toString();
+        return str;
     }
 
     public Document getDomElement(String xml){
-        Document doc = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
-
             DocumentBuilder db = dbf.newDocumentBuilder();
 
             InputSource is = new InputSource();
             is.setCharacterStream(new StringReader(xml));
-            doc = db.parse(is);
-
+            return db.parse(is);
         } catch (ParserConfigurationException e) {
-            Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         } catch (SAXException e) {
-            Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         } catch (IOException e) {
-            Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         }
-        // return DOM
-        return doc;
     }
 
     public String getValue(Element item, String str) {
