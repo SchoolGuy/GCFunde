@@ -1,10 +1,6 @@
 package de.noname.enno.gcfunde.Activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.NavigationView;
@@ -13,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -40,11 +35,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //This presents the action bar
+        // This presents the action bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Navigatition View
+        // Navigatition View
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -53,12 +48,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //List View
+        // List View
         l = (ListView) findViewById(R.id.list);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, days, days, days, days, days, this); //Parameter days is currently just here to guarantee that the app can be tested.
+        // Parameter days is currently just here to guarantee that the app can be tested.
+        GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, days, days, days, days, days, this);
         l.setAdapter(adapter1);
 
-        //Create folder for PoketQuerys at sdcard. I know I am using a hardcoded String at the end, but I tried several other solutions and this is the only working one, sry :/
+        // Create folder for PoketQuerys at sdcard. I know I am using a hardcoded String at the end, but I tried several
+        // other solutions and this is the only working one, sry :/
         File Directory = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/");
         Directory.mkdirs();
     }
@@ -82,12 +79,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.nav_search) {
             return true;
         }
@@ -102,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_search) {
-            //Do nothing
+            // Do nothing
         } else if (id == R.id.nav_create) {
             Intent intent = new Intent(this, CreateGeocacheEntry.class);
             startActivity(intent);

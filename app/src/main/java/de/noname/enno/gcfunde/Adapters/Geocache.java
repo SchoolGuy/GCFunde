@@ -40,6 +40,7 @@ public class Geocache {
         databaseHandler.writeIntoDB(this);
     }
 
+    // Getter and Setters
     public String getCacheID() {
         return cacheID;
     }

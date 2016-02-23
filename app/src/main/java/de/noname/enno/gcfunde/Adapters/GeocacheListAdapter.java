@@ -88,7 +88,7 @@ public class GeocacheListAdapter extends BaseAdapter {
             holder.Symbol = (ImageView) convertView.findViewById(R.id.imgVType);
             holder.FavSymbol = (ImageView) convertView.findViewById(R.id.imgVFavSymbol);
             holder.Direction = (ImageView) convertView.findViewById(R.id.imgVDirection);
-            //set Befehle fehlen noch!
+            //set commands missing!
         //}
         return convertView;
     }
