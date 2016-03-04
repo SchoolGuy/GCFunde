@@ -22,7 +22,7 @@ public class GeocachingXmlParser extends Activity {
     private String ExternalAppBasePath;
     private static final String TAG = GeocachingXmlParser.class.getSimpleName();
 
-    public GeocachingXmlParser(){
+    public GeocachingXmlParser() {
         ExternalAppBasePath = Environment.getExternalStorageDirectory().getPath() + File.separator + "GCFunde/";
     }
 
@@ -118,6 +118,24 @@ public class GeocachingXmlParser extends Activity {
         String title = null;
         String summary = null;
         String link = null;
+        String url = null;
+        String urlname = null;
+        String sym = null;
+        String type = null;
+        String groundspeakName = null;
+        String groundspeakPlacedBy = null;
+        String groundspeakOwner = null;
+        String groundspeakType = null;
+        String groundspeakContainer = null;
+        String groundspeakAttributes = null;
+        String groundspeakDifficulty = null;
+        String groundspeakTerrain = null;
+        String groundspeakCountry = null;
+        String groundspeakState = null;
+        String groundspeakShortDescription = null;
+        String groundspeakLongDescription = null;
+        String groundspeakEncodedHints = null;
+        String groundspeakLogsLog = null;
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
@@ -129,6 +147,42 @@ public class GeocachingXmlParser extends Activity {
                 summary = readSummary(parser);
             } else if (name.equals("name")) {
                 link = readLink(parser);
+            } else if (name.equals("name")) {
+                url = readLink(parser);
+            } else if (name.equals("name")) {
+                urlname = readLink(parser);
+            } else if (name.equals("name")) {
+                sym = readLink(parser);
+            } else if (name.equals("name")) {
+                type = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakName = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakPlacedBy = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakOwner = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakType = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakContainer = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakAttributes = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakDifficulty = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakTerrain = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakCountry = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakState = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakShortDescription = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakLongDescription = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakEncodedHints = readLink(parser);
+            } else if (name.equals("name")) {
+                groundspeakLogsLog = readLink(parser);
             } else {
                 skip(parser);
             }
@@ -153,7 +207,7 @@ public class GeocachingXmlParser extends Activity {
         String tag = parser.getName();
         String relType = parser.getAttributeValue(null, "rel");
         if (tag.equals("name")) {
-            if (relType.equals("alternate")){
+            if (relType.equals("alternate")) {
                 link = parser.getAttributeValue(null, "href");
                 parser.nextTag();
             }
