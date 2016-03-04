@@ -12,16 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
 import de.noname.enno.gcfunde.Adapters.GeocachingXmlParser;
 import de.noname.enno.gcfunde.R;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 import java.io.*;
-import java.util.ArrayList;
 
 /*
  * @author Enno Gotthold
@@ -61,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Directory.mkdirs();
 
         // Read Pocket Query
-        //
+        GeocachingXmlParser geocachingXmlParser = new GeocachingXmlParser();
+        geocachingXmlParser.parse();
 
         // List View
         l = (ListView) findViewById(R.id.list);

@@ -51,7 +51,7 @@ public class GeocachingXmlParser extends Activity {
             }
             String name = parser.getName();
             // Starts by looking for the entry tag
-            if (name.equals("entry")) {
+            if (name.equals("wpt")) {
                 entries.add(readEntry(parser));
             } else {
                 skip(parser);
