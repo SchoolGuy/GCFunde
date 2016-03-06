@@ -1,5 +1,6 @@
 package de.noname.enno.gcfunde.Activities;
 
+import android.R.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,9 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import de.noname.enno.gcfunde.R;
+import org.xmlpull.v1.XmlPullParserException;
 import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
 import de.noname.enno.gcfunde.Adapters.GeocachingXmlParser;
-import de.noname.enno.gcfunde.R;
 import java.io.*;
 
 /*
@@ -56,7 +58,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Read Pocket Query
         GeocachingXmlParser geocachingXmlParser = new GeocachingXmlParser();
-        geocachingXmlParser.parse();
+        try {
+            geocachingXmlParser.parse(new FileInputStream(new File(ExternalAppBasePath + "3211604" + ".gpx")));
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // List View
         l = (ListView) findViewById(R.id.list);

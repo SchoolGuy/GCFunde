@@ -4,17 +4,17 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_search" android:icon="@drawable/ic_action_search"
-            android:time="@string/activity_main_drawer_search"/>
+            android:title="@string/activity_main_drawer_search"/>
         <item android:id="@+id/nav_create" android:icon="@drawable/ic_action_add"
-            android:time="@string/activity_main_drawer_create"/>
+            android:title="@string/activity_main_drawer_create"/>
         <item android:id="@+id/nav_deatails" android:icon="@drawable/ic_action_add"
-            android:time="Geocache Details"/>
+            android:title="Geocache Details"/>
     </group>
 
-    <item android:time="@string/activity_main_drawer_headline2">
+    <item android:title="@string/activity_main_drawer_headline2">
         <menu>
             <item android:id="@+id/nav_settings" android:icon="@drawable/ic_action_settings"
-                android:time="@string/action_settings"/>
+                android:title="@string/action_settings"/>
         </menu>
     </item>
 
