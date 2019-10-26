@@ -165,3 +165,10 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+### User specific stuff
+/Gemfile.lock
+/secrets.properties
+*.jks
+*.pepk
+google_play_api_key.json
