@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Activities;
+package de.schoolguy.gcfunde.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.R;
 /*
  * @author Enno Gotthold
  * @version 0.1

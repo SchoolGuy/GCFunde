@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Adapters;
+package de.schoolguy.gcfunde.Adapters;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,9 +14,9 @@ import android.provider.BaseColumns;
  * This class was created with the help of the Google Android Tutorial, specifically {@link http://developer.android.com/training/basics/data-storage/databases.html}
  */
 
-public final class DatabaseHandler extends de.noname.enno.gcfunde.Activities.MainActivity {
+public final class DatabaseHandler extends de.schoolguy.gcfunde.Activities.MainActivity {
 
-    de.noname.enno.gcfunde.Activities.MainActivity mainActivity = new de.noname.enno.gcfunde.Activities.MainActivity();
+    de.schoolguy.gcfunde.Activities.MainActivity mainActivity = new de.schoolguy.gcfunde.Activities.MainActivity();
     /* This variables are defining the SQL statement for creating the database. */
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";

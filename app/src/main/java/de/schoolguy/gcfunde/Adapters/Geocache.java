@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Adapters;
+package de.schoolguy.gcfunde.Adapters;
 
 /**
  * @author Enno Gotthold

@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.schoolguy.gcfunde;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

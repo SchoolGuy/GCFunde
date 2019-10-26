@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Adapters;
+package de.schoolguy.gcfunde.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.R;
 
 /*
  * @author Enno Gotthold

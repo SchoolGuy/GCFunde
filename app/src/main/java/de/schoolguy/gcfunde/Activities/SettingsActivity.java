@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Activities;
+package de.schoolguy.gcfunde.Activities;
 
 
 import android.annotation.TargetApi;
@@ -23,7 +23,7 @@ import android.view.MenuItem;
 
 import java.util.List;
 
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.R;
 
 /**
  * @author Enno Gotthold

@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde;
+package de.schoolguy.gcfunde;
 
 import org.junit.Test;
 

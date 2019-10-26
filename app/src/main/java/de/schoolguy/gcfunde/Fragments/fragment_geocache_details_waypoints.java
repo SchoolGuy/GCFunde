@@ -1,11 +1,11 @@
-package de.noname.enno.gcfunde.Fragments;
+package de.schoolguy.gcfunde.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.R;
 
 /*
  * @author Enno Gotthold

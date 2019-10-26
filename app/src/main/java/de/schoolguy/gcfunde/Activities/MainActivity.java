@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Activities;
+package de.schoolguy.gcfunde.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import de.noname.enno.gcfunde.Adapters.GeocacheListAdapter;
-import de.noname.enno.gcfunde.Adapters.GeocachingXmlParser;
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.Adapters.GeocacheListAdapter;
+import de.schoolguy.gcfunde.Adapters.GeocachingXmlParser;
+import de.schoolguy.gcfunde.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

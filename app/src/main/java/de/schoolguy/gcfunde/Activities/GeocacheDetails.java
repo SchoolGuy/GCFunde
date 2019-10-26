@@ -1,4 +1,4 @@
-package de.noname.enno.gcfunde.Activities;
+package de.schoolguy.gcfunde.Activities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -20,10 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import de.noname.enno.gcfunde.Fragments.fragment_geocache_details;
-import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_log;
-import de.noname.enno.gcfunde.Fragments.fragment_geocache_details_waypoints;
-import de.noname.enno.gcfunde.R;
+import de.schoolguy.gcfunde.Fragments.fragment_geocache_details;
+import de.schoolguy.gcfunde.Fragments.fragment_geocache_details_log;
+import de.schoolguy.gcfunde.Fragments.fragment_geocache_details_waypoints;
+import de.schoolguy.gcfunde.R;
 
 import java.io.*;
 
