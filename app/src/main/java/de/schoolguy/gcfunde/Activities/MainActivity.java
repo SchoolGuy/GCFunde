@@ -61,25 +61,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Directory.mkdirs();
 
         // Read Pocket Query
-        GeocachingXmlParser parser = new GeocachingXmlParser();
-        String xml = parser.load();
-        Document document = parser.getDomElement (xml);
-        NodeList nl = document.getElementsByTagName("name");
+        //GeocachingXmlParser parser = new GeocachingXmlParser();
+        //String xml = parser.load();
+        //Document document = parser.getDomElement (xml);
+        //NodeList nl = document.getElementsByTagName("name");
 
-        ArrayList<String> gcCodeAL = new ArrayList<String>();
+        //ArrayList<String> gcCodeAL = new ArrayList<String>();
         // looping through all item nodes <item>
-        for (int i = 0; i < nl.getLength(); i++) {
-            Element e = (Element) nl.item(i);
-            gcCodeAL.add(parser.getValue(e,"name")); // name child value
-        }
+        //for (int i = 0; i < nl.getLength(); i++) {
+            //Element e = (Element) nl.item(i);
+            //gcCodeAL.add(parser.getValue(e,"name")); // name child value
+        //}
 
         // List View
         l = (ListView) findViewById(R.id.list);
         // Parameter days is currently just here to guarantee that the app can be tested.
-        String gcCode[] = new String[0];
-        gcCodeAL.toArray(gcCode);
-        GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, gcCode, days, days, days, days, this);
-        l.setAdapter(adapter1);
+        //String gcCode[] = new String[0];
+        //gcCodeAL.toArray(gcCode);
+        //GeocacheListAdapter adapter1 = new GeocacheListAdapter(days, gcCode, days, days, days, days, this);
+        //l.setAdapter(adapter1);
     }
 
     @Override
