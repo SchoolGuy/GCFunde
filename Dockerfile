@@ -1,13 +1,13 @@
 FROM openjdk:8-jdk
 
 # Just matched `app/build.gradle`
-ENV ANDROID_COMPILE_SDK "26"
+ENV ANDROID_COMPILE_SDK "28"
 # Just matched `app/build.gradle`
 ENV ANDROID_BUILD_TOOLS "28.0.3"
 # Version from https://developer.android.com/studio/releases/sdk-tools
 ENV ANDROID_SDK_TOOLS "24.4.1"
 # Version from https://services.gradle.org/distributions/
-ENV GRADLE_VERSION "5.3"
+ENV GRADLE_VERSION "5.4.1"
 
 ENV ANDROID_HOME /android-sdk-linux
 ENV PATH="${PATH}:/android-sdk-linux/platform-tools/"
