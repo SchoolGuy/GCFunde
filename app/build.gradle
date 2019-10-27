@@ -1,5 +1,20 @@
 apply plugin: 'com.android.application'
 
+// Try reading secrets from file
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretProperties = new Properties()
+
+if (secretsPropertiesFile.exists()) {
+    secretProperties.load(new FileInputStream(secretsPropertiesFile))
+}
+// Otherwise read from environment variables, this happens in CI
+else {
+    secretProperties.setProperty("google_project_id", "\"${System.getenv('google_project_id') ?: "null"}\"")
+    secretProperties.setProperty("signing_keystore_password", "${System.getenv('signing_keystore_password')}")
+    secretProperties.setProperty("signing_key_password", "${System.getenv('signing_key_password')}")
+    secretProperties.setProperty("signing_key_alias", "${System.getenv('signing_key_alias')}")
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -11,10 +26,34 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            storeFile file("../GCFunde.jks")
+            storePassword secretProperties['signing_keystore_password']
+            keyAlias secretProperties['signing_key_alias']
+            keyPassword secretProperties['signing_key_password']
+        }
+    }
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            pseudoLocalesEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            pseudoLocalesEnabled true
         }
     }
     compileOptions {
